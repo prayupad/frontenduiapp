@@ -4,33 +4,16 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-#COPY ./package.json /app
-
-
-
 COPY . /app
 
 RUN npm install
 
-#RUN ng build
-
 RUN npm run build 
 
-RUN pwd
+#################### Nginx Phase #####################
 
-RUN ls -lrt
-
-RUN ls -lrt /app/dist/blitzigo-sample-ui
-
-FROM nginx:latest
-
-#RUN ls -lrt /app/dist/blitzigo-sample-ui
-
+FROM nginx:alpine
+RUN rm -rf /usr/share/nginx/html/* && rm -rf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist/blitzigo-sample-ui /usr/share/nginx/html
-
-
-#RUN npm run build --prod
-
-#ENV PORT=80
-
 EXPOSE 80
