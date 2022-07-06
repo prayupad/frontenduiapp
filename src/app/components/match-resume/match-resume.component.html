@@ -1,0 +1,21 @@
+<div class="main-wrapper layout" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Upload JD</mat-card-title>
+      </mat-card-header>
+  
+      <form class="example-form"  [formGroup]="matchResumeForm" (ngSubmit)="matchResumes()">
+  
+        <mat-card-content>
+          <mat-card-content>
+            <mat-form-field>
+              <ngx-mat-file-input [multiple]="false" formControlName="file"></ngx-mat-file-input>
+            </mat-form-field>
+          </mat-card-content>
+        </mat-card-content>
+  
+        <button mat-stroked-button color="accent" class="btn-block">Find Matches</button>
+  
+      </form>
+    </mat-card>
+  </div>

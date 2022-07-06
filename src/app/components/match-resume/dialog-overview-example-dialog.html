@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Hurry! Matches found</h1>
+<p style="text-align: right;"><a target="_blank" href="{{externalUrl}}">Click here</a> to view results in sovern</p>
+<div mat-dialog-content>
+  <table mat-table [dataSource]="tableData" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- EmailId Column -->
+    <ng-container matColumnDef="emailId">
+      <th mat-header-cell *matHeaderCellDef> Email ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+    </ng-container>
+  
+    <!-- MobileNumber Column -->
+    <ng-container matColumnDef="mobileNumber">
+      <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+      <td mat-cell *matCellDef="let element"> {{element.mobileNumber}} </td>
+    </ng-container>
+  
+    <!-- ResumeScore Column -->
+    <ng-container matColumnDef="resumeScore">
+      <th mat-header-cell *matHeaderCellDef> Resume Score </th>
+      <td mat-cell *matCellDef="let element"> {{element.resumeScore}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="tableData" cdkFocusInitial>Ok</button>
+</div>
