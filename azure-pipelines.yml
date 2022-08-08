@@ -21,6 +21,6 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'non_prod_acr'
-    repository: 'testyaml'
+    repository: $(reoo)
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
